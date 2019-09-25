@@ -1,0 +1,54 @@
+/* Generics */
+@import "../node_modules/normalize.css/normalize.css";
+@import "../node_modules/scsa-lib-styles/src/generic/border-box.css";
+@import "../node_modules/scsa-lib-styles/src/generic/font-family.css";
+@import "../node_modules/scsa-lib-styles/src/generic/fullBleed-body.css";
+/* Modules */
+@import "../node_modules/scsa-lib-styles/src/modules/Button.css";
+
+.ProductGrid {
+    display: grid;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ProductGrid-item {
+    padding: 1rem;
+}
+
+.Product {
+    border: 2px solid #ffffff;
+    border-radius: 2px;
+
+    display: block;
+    transition: box-shadow 250ms ease-in-out, background-color 250ms ease-in-out;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+}
+
+.Product:hover {
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.Product-body {
+    padding: 1rem;
+}
+
+.Product-footer {
+    background-color: #f9fafc;
+    border-top: 1px solid #eaeefb;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.Picture--center {
+    text-align: center;
+}
