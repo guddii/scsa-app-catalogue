@@ -5,7 +5,7 @@ import { SecurityChecks } from "scsa-lib-messaging/src/SecurityChecks";
 
 export class App extends MessageEndpoint {
     button = document.querySelector("button");
-    products: Array<any> = [];
+
 
     constructor(
         endpointProperties: EndpointProperties,
@@ -21,12 +21,6 @@ export class App extends MessageEndpoint {
 
     subscribe(event: MessageEvent) {
         super.subscribe(event);
-        if (event.data.body.hasOwnProperty("product")) {
-            this.products.push(event.data.body.product);
-            this.button.querySelector(
-                "span"
-            ).innerText = `(${this.products.length})`;
-        }
         if (event.data.body.hasOwnProperty("hello")) {
             this.publish(
                 new Message({
