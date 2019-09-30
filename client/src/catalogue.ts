@@ -1,6 +1,6 @@
-import "./main.css";
+import "./catalogue.css";
 
-import { SecurityChecks } from "scsa-lib-messaging/src/SecurityChecks";
+import { SecurityChecks } from "@scsa/messaging/src/SecurityChecks";
 import { Applications } from "./scripts/Constant";
 import { App } from "./scripts/App";
 

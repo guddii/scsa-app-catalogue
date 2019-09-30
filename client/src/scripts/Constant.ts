@@ -1,4 +1,4 @@
-import { EndpointProperties } from "scsa-lib-messaging/src/endpoints/Endpoint";
+import { EndpointProperties } from "@scsa/messaging/src/endpoints/Endpoint";
 
 export const Applications = {
     MAIN: new EndpointProperties("MainApp", process.env.HOST_MAIN),

@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@scsa/*": ["node_modules/@scsa/*"]
+        },
         "outDir": "./dist",
         "noImplicitAny": true,
         "target": "es2015",
@@ -7,5 +11,8 @@
         "esModuleInterop": true,
         "sourceMap": true,
         "typeRoots": ["src/types"]
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

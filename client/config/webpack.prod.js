@@ -7,17 +7,19 @@ require("dotenv").config({ silent: process.env.NODE_ENV === "production" });
 
 const { dist, src } = require("./path");
 const { preprocessor } = require("./loader");
+const scs = "catalogue";
 
+console.log(process.env.npm_package_name);
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, src + "/main.ts")
+        main: path.resolve(__dirname, src + "/" + scs + ".ts")
     },
     resolve: {
         extensions: [".ts", ".js"]
     },
     output: {
         path: path.resolve(__dirname, dist),
-        filename: "[name].[hash].js"
+        filename: scs + ".[hash].js"
     },
     module: {
         rules: [
@@ -55,7 +57,7 @@ module.exports = {
             root: process.cwd()
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].[hash].css"
+            filename: scs + ".[hash].css"
         }),
         new HtmlWebpackPlugin({
             inject: false,

@@ -1,7 +1,7 @@
-import { MessageEndpoint } from "scsa-lib-messaging/src/endpoints/MessageEndpoint";
-import { Message } from "scsa-lib-messaging/src/constructors/Message";
-import { EndpointProperties } from "scsa-lib-messaging/src/endpoints/Endpoint";
-import { SecurityChecks } from "scsa-lib-messaging/src/SecurityChecks";
+import { MessageEndpoint } from "@scsa/messaging/src/endpoints/MessageEndpoint";
+import { Message } from "@scsa/messaging/src/constructors/Message";
+import { EndpointProperties } from "@scsa/messaging/src/endpoints/Endpoint";
+import { SecurityChecks } from "@scsa/messaging/src/SecurityChecks";
 
 export class App extends MessageEndpoint {
     button = document.querySelector("button");

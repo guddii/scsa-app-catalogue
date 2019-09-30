@@ -2,21 +2,24 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 require("dotenv").config({ silent: process.env.NODE_ENV === "production" });
 
 const { dist, src } = require("./path");
 const { preprocessor } = require("./loader");
+const scs = "catalogue";
 
 module.exports = {
+    stats: "errors-warnings",
     entry: {
-        main: path.resolve(__dirname, src + "/main.ts")
+        main: path.resolve(__dirname, src + "/" + scs + ".ts")
     },
     resolve: {
         extensions: [".ts", ".js"]
     },
     output: {
         path: path.resolve(__dirname, dist),
-        filename: "[name].[hash].js"
+        filename: scs + ".[hash].js"
     },
     devtool: "source-map",
     devServer: {
@@ -67,11 +70,11 @@ module.exports = {
             HOST_CHECKOUT: "http://localhost:4030"
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].[hash].css"
+            filename: scs + ".[hash].css"
         }),
         new HtmlWebpackPlugin({
             inject: false,
-            hash: false,
+            meta: { viewport: "width=device-width" },
             template: path.resolve(__dirname, src + "/index.html"),
             filename: "index.html"
         })
