@@ -23,12 +23,12 @@
     "start:watch": "node ./dist/server/*.js",
     "watch": "run-s clean build:dev start:watch",
     "build": "run-s clean build:prod",
-    "build:dev": "run-p build:dev:*",
-    "build:dev:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/dev.js --mode development",
-    "build:dev:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/dev.js --mode development",
-    "build:prod": "run-p build:prod:*",
-    "build:prod:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/prod.js --mode production",
-    "build:prod:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/prod.js --mode production"
+    "build:dev": "run-p \"build:dev:* -- {@}\" -- ",
+    "build:dev:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/dev.js",
+    "build:dev:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/dev.js",
+    "build:prod": "run-p \"build:prod:* -- {@}\" -- ",
+    "build:prod:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/prod.js",
+    "build:prod:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/prod.js"
   },
   "dependencies": {
     "@scsa/global": "https://github.com:guddii/scsa-cfg-global.git",
