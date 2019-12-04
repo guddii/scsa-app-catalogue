@@ -19,7 +19,7 @@
   "version": "1.0.0",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "start": "NODE_ENV=\"production\" node ./dist/server/*.js",
+    "start": "node ./dist/server/*.js",
     "start:watch": "node ./dist/server/*.js",
     "watch": "run-s clean build:dev start:watch",
     "build": "run-s clean build:prod",
