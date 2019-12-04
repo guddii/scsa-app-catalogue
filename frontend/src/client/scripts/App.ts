@@ -1,16 +1,18 @@
-import { MessageEndpoint } from "@scsa/messaging/src/endpoints/MessageEndpoint";
-import { Message } from "@scsa/messaging/src/constructors/Message";
-import { EndpointProperties } from "@scsa/messaging/src/endpoints/Endpoint";
-import { SecurityChecks } from "@scsa/messaging/src/SecurityChecks";
+import {
+    MessageEndpoint,
+    EndpointProperties,
+    Message,
+    SecurityChecks
+} from "@scsa/messaging";
 
 export class App extends MessageEndpoint {
     button = document.querySelector("button");
 
 
     constructor(
-        endpointProperties: EndpointProperties,
-        mainProperties: EndpointProperties,
-        securityChecks: SecurityChecks = new SecurityChecks()
+      endpointProperties: EndpointProperties,
+      mainProperties: EndpointProperties,
+      securityChecks: SecurityChecks = new SecurityChecks()
     ) {
         super(endpointProperties, mainProperties, securityChecks);
         this.button.addEventListener("click", (event: MouseEvent) => {
@@ -23,9 +25,9 @@ export class App extends MessageEndpoint {
         super.subscribe(event);
         if (event.data.body.hasOwnProperty("hello")) {
             this.publish(
-                new Message({
-                    hello: `Hello Main, ${this.endpointProperties.name} is here.`
-                })
+              new Message({
+                  hello: `Hello Main, ${this.endpointProperties.name} is here.`
+              })
             );
         }
     }

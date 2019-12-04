@@ -1,0 +1,62 @@
+{
+  "name": "@scsa/catalogue-app",
+  "private": true,
+  "description": "Self-Contained System for Catalogue",
+  "license": "MIT",
+  "author": "Florian Gudat <florian.gudat@guices.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guddii/scsa-app-catalogue"
+  },
+  "engines": {
+    "node": "12.13.1",
+    "npm": "6.13.1"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "start": "NODE_ENV=\"production\" node ./dist/server/*.js",
+    "start:watch": "node ./dist/server/*.js",
+    "watch": "run-s clean build:dev start:watch",
+    "build": "run-s clean build:prod",
+    "build:dev": "run-p build:dev:*",
+    "build:dev:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/dev.js --mode development",
+    "build:dev:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/dev.js --mode development",
+    "build:prod": "run-p build:prod:*",
+    "build:prod:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/prod.js --mode production",
+    "build:prod:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/prod.js --mode production"
+  },
+  "dependencies": {
+    "@scsa/global": "https://github.com:guddii/scsa-cfg-global.git",
+    "@scsa/build": "https://github.com:guddii/scsa-cfg-build.git",
+    "@scsa/messaging": "https://github.com:guddii/scsa-lib-messaging.git",
+    "@scsa/styling": "https://github.com:guddii/scsa-lib-styling.git",
+    "css-loader": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "npm-run-all": "^4.1.5",
+    "pug": "^2.0.4",
+    "style-loader": "^1.0.1",
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^12.12.11",
+    "@types/webpack": "^4.41.0",
+    "@types/webpack-dev-middleware": "^2.0.3",
+    "@types/webpack-env": "^1.14.1",
+    "@types/webpack-hot-middleware": "^2.16.5"
+  },
+  "keywords": [
+    "Self-containd System"
+  ]
+}

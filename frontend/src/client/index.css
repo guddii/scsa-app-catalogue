@@ -1,11 +1,4 @@
-/* Generics */
-@import "../node_modules/normalize.css/normalize.css";
-@import "../node_modules/@scsa/styles/src/generic/border-box.css";
-@import "../node_modules/@scsa/styles/src/generic/font-family.css";
-@import "../node_modules/@scsa/styles/src/generic/fullBleed-body.css";
-/* Modules */
-@import "../node_modules/@scsa/styles/src/modules/Button.css";
-@import "../node_modules/@scsa/styles/src/modules/Logger.css";
+@import "../../node_modules/@scsa/styling/src/client/styles/index.css";
 
 .ProductGrid {
     display: grid;
