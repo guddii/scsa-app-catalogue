@@ -7,6 +7,4 @@ import { App } from "./App";
 const secureContexts = Object.values(Applications).map((a: any) => a.url.host);
 const securityChecks = new SecurityChecks(secureContexts);
 
-console.log(secureContexts);
-
 new App(Applications.MAIN, Applications.PARENT, securityChecks);
