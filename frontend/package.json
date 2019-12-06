@@ -9,8 +9,8 @@
     "url": "https://github.com/guddii/scsa-app-catalogue"
   },
   "engines": {
-    "node": "12.13.1",
-    "npm": "6.13.1"
+    "node": ">=12.13.1",
+    "npm": ">=6.13.1"
   },
   "os": [
     "darwin",
