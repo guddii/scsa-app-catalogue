@@ -27,6 +27,7 @@
     "@scsa/global": "https://github.com:guddii/scsa-cfg-global.git",
     "@scsa/messaging": "https://github.com:guddii/scsa-lib-messaging.git",
     "@scsa/styling": "https://github.com:guddii/scsa-lib-styling.git",
+    "cors": "^2.8.5",
     "css-loader": "^3.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
