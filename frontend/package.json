@@ -1,6 +1,6 @@
 {
-  "name": "@scsa/catalogue-app",
   "private": true,
+  "name": "@scsa/catalogue-app",
   "description": "Self-Contained System for Catalogue",
   "license": "MIT",
   "author": "Florian Gudat <florian.gudat@guices.com>",
@@ -8,31 +8,23 @@
     "type": "git",
     "url": "https://github.com/guddii/scsa-app-catalogue"
   },
-  "engines": {
-    "node": ">=12.13.1",
-    "npm": ">=6.13.1"
-  },
-  "os": [
-    "darwin",
-    "linux"
-  ],
   "version": "1.0.0",
   "scripts": {
+    "build": "run-s clean build:prod",
+    "build:dev": "run-p \"build:dev:* -- {@}\" -- ",
+    "build:dev:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/dev.js",
+    "build:dev:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/dev.js",
+    "build:prod": "run-p \"build:prod:* -- {@}\" -- ",
+    "build:prod:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/prod.js",
+    "build:prod:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/prod.js",
     "clean": "rm -rf ./dist",
     "start": "node ./dist/server/*.js",
     "start:watch": "node ./dist/server/*.js",
-    "watch": "run-s clean build:dev start:watch",
-    "build": "run-s clean build:prod",
-    "build:dev": "run-p \"build:dev:* -- {@}\" -- ",
-    "build:dev:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/dev.js",
-    "build:dev:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/dev.js",
-    "build:prod": "run-p \"build:prod:* -- {@}\" -- ",
-    "build:prod:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/prod.js",
-    "build:prod:client": "webpack --config ./node_modules/@scsa/build/src/webpack/client/prod.js"
+    "watch": "run-s clean build:dev start:watch"
   },
   "dependencies": {
-    "@scsa/global": "https://github.com:guddii/scsa-cfg-global.git",
     "@scsa/build": "https://github.com:guddii/scsa-cfg-build.git",
+    "@scsa/global": "https://github.com:guddii/scsa-cfg-global.git",
     "@scsa/messaging": "https://github.com:guddii/scsa-lib-messaging.git",
     "@scsa/styling": "https://github.com:guddii/scsa-lib-styling.git",
     "css-loader": "^3.2.0",
@@ -41,7 +33,9 @@
     "mini-css-extract-plugin": "^0.8.0",
     "npm-run-all": "^4.1.5",
     "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
     "style-loader": "^1.0.1",
+    "terser-webpack-plugin": "^2.2.2",
     "ts-loader": "^6.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
@@ -58,5 +52,13 @@
   },
   "keywords": [
     "Self-containd System"
+  ],
+  "engines": {
+    "node": ">=12.13.1",
+    "npm": ">=6.13.1"
+  },
+  "os": [
+    "darwin",
+    "linux"
   ]
 }
