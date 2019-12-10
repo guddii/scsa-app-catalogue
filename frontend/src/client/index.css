@@ -1,4 +1,4 @@
-@import "../../node_modules/@scsa/styling/src/client/styles/index.css";
+@import "~@scsa/styling/src/client/styles/index.css";
 
 .ProductGrid {
     display: grid;
