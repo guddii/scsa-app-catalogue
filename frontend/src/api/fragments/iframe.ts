@@ -13,6 +13,9 @@ export class Iframe implements IEventDrivenConsumer {
     private logger: LoggerSingleton;
 
     constructor() {
+        if (top === self) {
+            console.warn("This system was not instantiated in an iFrame");
+        }
         eventDrivenConsumer.subscribe(this);
 
         if (this.button) {
@@ -24,7 +27,7 @@ export class Iframe implements IEventDrivenConsumer {
 
     handleClick(event) {
         eventDrivenConsumer.publish(
-            new Message({ product: { name: "Test Product" } })
+            new Message({ add: { products: ["Product 1"] } })
         );
     }
 

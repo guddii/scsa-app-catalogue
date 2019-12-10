@@ -1,5 +1,5 @@
 import "./index.css";
-import "./scripts";
+import "../api/fragments/iframe";
 
 // @ts-ignore
 if (module.hot) module.hot.accept();
