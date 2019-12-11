@@ -1,7 +1,7 @@
 import {
     EventDrivenConsumer,
     IEventDrivenConsumer,
-    LoggerSingleton,
+    Logger,
     Message
 } from "@scsa/messaging";
 import { cfg } from "../../config";
@@ -10,7 +10,7 @@ const eventDrivenConsumer = new EventDrivenConsumer(cfg);
 
 export class Iframe implements IEventDrivenConsumer {
     button = document.querySelector("button");
-    private logger: LoggerSingleton;
+    private logger: Logger;
 
     constructor() {
         eventDrivenConsumer.subscribe(this);
@@ -19,7 +19,7 @@ export class Iframe implements IEventDrivenConsumer {
             this.button.addEventListener("click", this.handleClick);
         }
 
-        this.logger = LoggerSingleton.getInstance();
+        this.logger = new Logger();
     }
 
     handleClick(event) {
