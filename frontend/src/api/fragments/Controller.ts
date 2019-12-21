@@ -1,40 +1,46 @@
 import {
-  EventDrivenConsumer,
-  IEventDrivenConsumer,
-  Logger,
-  Message
+    EventDrivenConsumerGT,
+    IEventDrivenConsumer,
+    Logger,
+    Message
 } from "@scsa/messaging";
-import { cfg } from "../../config";
 import "../../client/index.css";
+import { cfg } from "../../config";
 
-const eventDrivenConsumer = new EventDrivenConsumer(cfg);
-
-interface IframeOptions {
-  ctx?: Element | Document;
+interface IIframeOptions {
+    ctx?: Element | Document;
+    edc?: any;
 }
 
 export class Controller implements IEventDrivenConsumer {
-  button = document.querySelector("button");
-  private logger: Logger;
+    public button = document.querySelector("button");
+    private logger: Logger;
+    private options: IIframeOptions;
 
-  constructor(options: IframeOptions = { ctx: document }) {
-    eventDrivenConsumer.subscribe(this);
+    constructor(
+        options: IIframeOptions = {
+            ctx: document,
+            edc: new EventDrivenConsumerGT(cfg)
+        }
+    ) {
+        this.options = options;
+        this.options.edc.subscribe(this);
 
-    const button = options.ctx.querySelector("button");
-    button.addEventListener("click", this.handleClick);
+        const button = options.ctx.querySelector("button");
+        button.addEventListener("click", this.handleClick);
 
-    this.logger = new Logger({
-      ctx: options.ctx
-    });
-  }
+        this.logger = new Logger({
+            ctx: options.ctx
+        });
+    }
 
-  handleClick(event) {
-    eventDrivenConsumer.publish(
-      new Message({ add: { products: ["Product 1"] } })
-    );
-  }
+    public handleClick = event => {
+        this.options.edc.publish(
+            new Message({ add: { products: ["Product 1"] } })
+        );
+    };
 
-  callback(data) {
-    this.logger.write(data);
-  }
+    public callback(data) {
+        this.logger.write(data);
+    }
 }

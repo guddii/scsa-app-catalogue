@@ -1,4 +1,5 @@
 declare module '*.pug' {
-  const value: any;
-  export default value;
+  const locals: object;
+  function template(locals?): string;
+  export default template;
 }

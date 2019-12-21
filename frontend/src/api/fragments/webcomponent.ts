@@ -1,9 +1,9 @@
-import { EventDrivenConsumer, IEventDrivenConsumer, Logger, Message } from "@scsa/messaging";
+import { EventDrivenConsumerMS, IEventDrivenConsumer, Logger, Message } from "@scsa/messaging";
+import "../../client/index.css";
 import { cfg } from "../../config";
 import tpl from "../../server/views/partials/entry.pug";
-import "../../client/index.css";
 
-const eventDrivenConsumer = new EventDrivenConsumer(cfg);
+const eventDrivenConsumer = new EventDrivenConsumerMS(cfg);
 
 class CatalogueStock extends HTMLElement implements IEventDrivenConsumer {
   private logger: Logger;
@@ -21,25 +21,24 @@ class CatalogueStock extends HTMLElement implements IEventDrivenConsumer {
     eventDrivenConsumer.subscribe(this);
   }
 
-  render() {
+  public render() {
     const template = document.createElement("template");
     template.innerHTML += tpl();
     template.innerHTML += `<link type="text/css" rel="stylesheet" href="${cfg
-      .CURRENT.options.url + "assets/client.css"}">`;
+      .CURRENT.options.url + "api/fragments/webcomponent.css"}">`;
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  handleClick(event) {
+  public handleClick(event) {
     eventDrivenConsumer.publish(
       new Message({ add: { products: ["Product 1"] } })
     );
   }
 
-  callback(data) {
+  public callback(data) {
     this.logger.write(data);
   }
 }
-
 
 window.customElements.define("catalogue-stock", CatalogueStock);

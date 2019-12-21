@@ -1,15 +1,15 @@
 import {
-    EventDrivenConsumer,
+    EventDrivenConsumerMS,
     IEventDrivenConsumer,
     Logger,
     Message
 } from "@scsa/messaging";
 import { cfg } from "../../config";
 
-const eventDrivenConsumer = new EventDrivenConsumer(cfg);
+const eventDrivenConsumer = new EventDrivenConsumerMS(cfg);
 
 export class Iframe implements IEventDrivenConsumer {
-    button = document.querySelector("button");
+    public button = document.querySelector("button");
     private logger: Logger;
 
     constructor() {
@@ -22,15 +22,15 @@ export class Iframe implements IEventDrivenConsumer {
         this.logger = new Logger();
     }
 
-    handleClick(event) {
+    public handleClick(event) {
         eventDrivenConsumer.publish(
             new Message({ product: { name: "Test Product" } })
         );
     }
 
-    callback(data) {
+    public callback(data) {
         this.logger.write(data);
     }
 }
 
-new Iframe();
+const iframe = new Iframe();
