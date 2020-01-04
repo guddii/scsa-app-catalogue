@@ -40,7 +40,16 @@ export class Controller implements IEventDrivenConsumer {
         );
     };
 
+    public handleSearchRequest(data) {
+        if (data.payload.search) {
+            this.options.edc.publish(
+                new Message({ found: { products: ["Product 1"] } })
+            );
+        }
+    }
+
     public callback(data) {
         this.logger.write(data);
+        this.handleSearchRequest(data);
     }
 }
