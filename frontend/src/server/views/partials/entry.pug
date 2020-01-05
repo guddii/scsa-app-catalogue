@@ -2,10 +2,11 @@ ul.ProductGrid
     li.ProductGrid-item
         .Product
             .Product-body
-                .Picture.Picture--center
-                    | ...
                 h3 Title
                 div Description
             .Product-footer
-                button.Button.Button--fullBleed Add to Basket
+                if req.query.slot
+                    iframe(src=req.query.slot frameborder=0)
+                else
+                    slot(name="controls")
 .Logger.Logger--stickyBottom(data-logger)
