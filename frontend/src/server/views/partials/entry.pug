@@ -5,5 +5,10 @@ ul.ProductGrid
                 h3 Title
                 div Description
             .Product-footer
-                slot(name="controls")
+                if req && req.query && req.query.slot
+                    iframe(src=decodeURIComponent(req.query.slot) class="Socket Socket--fullBleed" style="height:65px" data-endpoint="socket" sandbox="allow-scripts allow-same-origin")
+                else if req && req.query && req.query.inc
+                    esi:include(src=decodeURIComponent(req.query.inc))
+                else
+                    slot(name="controls" style="height:65px")
 .Logger.Logger--stickyBottom(data-logger)

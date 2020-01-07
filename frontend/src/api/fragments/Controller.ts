@@ -26,19 +26,10 @@ export class Controller implements IEventDrivenConsumer {
         this.options = options;
         this.options.edc.subscribe(this);
 
-        const button = options.ctx.querySelector("button");
-        button.addEventListener("click", this.handleClick);
-
         this.logger = new Logger({
             ctx: options.ctx
         });
     }
-
-    public handleClick = event => {
-        this.options.edc.publish(
-            new Message({ add: { products: ["Product 1"] } })
-        );
-    };
 
     public handleSearchRequest(data) {
         if (data.payload.search) {
