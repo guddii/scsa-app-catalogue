@@ -11,16 +11,11 @@
   "version": "1.0.0",
   "scripts": {
     "build": "run-s clean build:prod",
-    "build:dev": "run-p \"build:dev:* -- {@}\" -- ",
-    "build:dev:api": "webpack --config ./node_modules/@scsa/build/src/webpack/api/dev.js",
-    "build:dev:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/dev.js",
     "build:prod": "run-p \"build:prod:* -- {@}\" -- ",
     "build:prod:api": "webpack --config ./node_modules/@scsa/build/src/webpack/api/prod.js",
     "build:prod:server": "webpack --config ./node_modules/@scsa/build/src/webpack/server/prod.js",
     "clean": "rm -rf ./dist",
-    "start": "node ./dist/server/*.js",
-    "start:watch": "node ./dist/server/*.js",
-    "watch": "run-s clean build:dev start:watch"
+    "start": "node ./dist/server/*.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
