@@ -26,7 +26,7 @@
     "cors": "^2.8.5",
     "css-loader": "^3.2.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-loader": "^5.0.2",
     "mini-css-extract-plugin": "^0.8.0",
     "nodesi": "^1.12.1",
